@@ -1,11 +1,28 @@
 
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, Modal, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView, Modal, TouchableOpacity, Image, ActivityIndicator, Alert } from 'react-native';
 import { useState } from 'react';
 
+const createTwoButtonAlert = () => {
+  Alert.alert(
+    "Alert Title",
+    "My Alert Msg",
+    [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel"
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") }
+    ],
+    { cancelable: false }
+  )
+};
 
 
 export default function App() {
+
+
 
   const [value, onChangeText] = useState('Your name')
 
@@ -66,8 +83,12 @@ export default function App() {
           Det är ett välkänt faktum att läsare distraheras av läsbar text på en sida när man skall studera layouten. Poängen med Lorem Ipsum är att det ger ett normalt ordflöde, till skillnad från "Text här, Text här", och ger intryck av att vara läsbar text. Många publiseringprogram och webbutvecklare använder Lorem Ipsum som test-text, och en sökning efter "Lorem Ipsum" avslöjar många webbsidor under uteckling. Olika versioner har dykt upp under åren, ibland av olyckshändelse, ibland med flit (mer eller mindre humoristiska).
         </Text>
       </ScrollView>
+
+
       <View style={{ marginBottom: 25, marginLeft: 25, marginTop: 20, flexDirection: 'row' }}>
-        <TouchableOpacity onPress={() => setIsLoading((prev) => !prev)}><Text>Load More</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => createTwoButtonAlert()}>
+          <Text>Load More</Text>
+        </TouchableOpacity>
         <ActivityIndicator animating={isLoading}
           size="small"
           color="blue"
